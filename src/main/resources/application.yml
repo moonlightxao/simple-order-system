@@ -8,3 +8,6 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
 server:
   port: 8080
+mybatis:
+  type-aliases-package: edu.njust.pojo
+  mapper-locations: classpath:mybatis/mapper/*.xml

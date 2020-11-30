@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 /*管理员用户表对应的实体类*/
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @Component
 public class Admin {
@@ -17,4 +16,11 @@ public class Admin {
     private String usr;
     private String pwd;
     private String tel;
+
+    public Admin(String name, String usr, String pwd, String tel){
+        this.name = name;
+        this.usr = usr;
+        this.pwd = pwd;
+        this.tel = tel;
+    }
 }

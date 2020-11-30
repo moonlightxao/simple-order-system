@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class Dish {
     private int id;
     private int dishTypeId;

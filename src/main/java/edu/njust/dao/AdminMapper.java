@@ -7,5 +7,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Mapper
 public interface AdminMapper {
-    int login(Admin admin);
+    Admin login(String usr);
+
+    boolean createAdmin(Admin admin);
+
+    boolean updateAdmin(Admin admin);
+
 }

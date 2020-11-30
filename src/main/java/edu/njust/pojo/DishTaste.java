@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class DishTaste {
     private int id;
-    private int DishId;
+    private int dishId;
     private String taste;
 }
