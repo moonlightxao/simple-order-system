@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.njust.dao.OrdersMapper">
+    <resultMap id="orderMap" type="Orders">
+        <id property="id" column="ID"></id>
+        <result property="tableId" column="tables_ID"></result>
+        <result property="totalPrice" column="total_price"></result>
+        <result property="packPrice" column="pack_price"></result>
+        <result property="realPrice" column="real_price"></result>
+        <result property="ordersTime" column="orders_time"></result>
+        <result property="settleTime" column="settle_time"></result>
+        <result property="state" column="state"></result>
+        <result property="comment" column="bz"></result>
+    </resultMap>
+
+    <resultMap id="orderDishMap" type="OrdersDish">
+        <id property="id" column="ID"></id>
+        <result property="dishId" column="dish_ID"></result>
+        <result property="orderId" column="orders_ID"></result>
+        <result property="dishSizeId" column="dish_size_ID"></result>
+        <result property="dishTasteId" column="dish_taste_ID"></result>
+        <result property="nowPrice" column="now_price"></result>
+        <result property="num" column="num"></result>
+        <result property="state" column="state"></result>
+        <result property="comment" column="bz"></result>
+    </resultMap>
+
+    <select id="allOrders" resultMap="orderMap">
+        select * from order_system.orders
+    </select>
+
+    <select id="getOrderById" resultMap="orderMap">
+        select * from order_system.orders where ID=#{id}
+    </select>
+
+    <insert id="addNewOrder" parameterType="Orders">
+        insert into order_system.orders(tables_ID, total_price, pack_price, real_price, orders_time, settle_time, state, bz) values(#{tableId},#{totalPrice},#{packPrice},#{realPrice},#{ordersTime},#{settleTime},#{state},#{comment})
+    </insert>
+
+    <delete id="deleteOrderById">
+        delete from order_system.orders where ID=#{id}
+    </delete>
+
+    <select id="getAllOrdersDishById" resultMap="orderDishMap">
+        select * from order_system.orders_dish where orders_ID=#{id}
+    </select>
+
+    <delete id="deleteOrdersDishById">
+        delete from order_system.orders_dish where orders_ID=#{oid} AND dish_ID=#{did}
+    </delete>
+
+    <insert id="addOrdersDish" parameterType="OrdersDish">
+        insert into order_system.orders_dish(dish_ID, orders_ID, dish_size_ID, dish_taste_ID, now_price, num, state, bz) values(#{dishId},#{orderId},#{dishSizeId},#{dishTasteId},#{nowPrice},#{num},#{state},#{comment});
+    </insert>
+</mapper>

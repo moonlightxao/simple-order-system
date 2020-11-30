@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.njust.dao.TableMapper">
+    <resultMap id="tableMap" type="Tables">
+        <id property="id" column="ID"></id>
+        <result property="name" column="name"></result>
+        <result property="leastCost" column="least_cost"></result>
+        <result property="maxNum" column="num"></result>
+        <result property="state" column="state"></result>
+        <result property="comment" column="bz"></result>
+    </resultMap>
+
+    <select id="allTables" resultMap="tableMap">
+        select * from order_system.tables
+    </select>
+
+    <select id="getTableState" resultType="int">
+        select t.state from order_system.tables as t where ID=#{id}
+    </select>
+
+    <update id="updateTable" parameterType="Tables">
+        update order_system.tables set name=#{name},least_cost=#{leastCost},num=#{maxNum},state=#{state},bz=#{comment} where ID=#{id}
+    </update>
+
+    <insert id="addTables" parameterType="Tables">
+        insert into order_system.tables(name, num, least_cost, state, bz) values(#{name},#{maxNum},#{leastCost},#{state},#{comment});
+    </insert>
+
+    <select id="findTableById" resultMap="tableMap">
+        select * from order_system.tables where ID=#{id}
+    </select>
+
+    <delete id="deleteTableById">
+        delete from order_system.tables where ID=#{id}
+    </delete>
+</mapper>

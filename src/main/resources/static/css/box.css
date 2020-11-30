@@ -1,0 +1,22 @@
+.box {
+    width: 100%;
+    border-color: pink;
+    margin: 0 auto;
+    float:none;
+}
+.box>li {
+    width: 150px;
+    height: 150px;
+    background-color: pink;
+    float: left;
+    margin-right: 4px;
+    list-style: none;
+}
+.dish_picture {
+    width: 100%;
+    height: 70%;
+    background-color: #ff3b2b;
+}
+.dish_name {
+    width: 100%;
+}

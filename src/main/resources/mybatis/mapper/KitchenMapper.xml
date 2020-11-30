@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.njust.dao.KitchenMapper">
+    <resultMap id="kitchenMap" type="Kitchen">
+        <id property="id" column="ID"></id>
+        <result property="name" column="name"></result>
+    </resultMap>
+
+    <resultMap id="kdMap" type="KitchenDishType">
+        <id property="id" column="ID"></id>
+        <result property="kitchenId" column="kitchen_ID"></result>
+        <result property="dishTypeId" column="dish_type_ID"></result>
+    </resultMap>
+
+    <select id="allKitchens" resultMap="kitchenMap">
+        select * from order_system.kitchen
+    </select>
+
+    <select id="getKitchenById" resultMap="kitchenMap">
+        select * from order_system.kitchen where ID=#{id}
+    </select>
+
+    <insert id="addKitchen" parameterType="Kitchen">
+        insert into order_system.kitchen(name) values(#{name});
+    </insert>
+
+    <delete id="deleteKitchenById">
+        delete from order_system.kitchen where ID=#{id}
+    </delete>
+
+    <select id="getAllDishTypeById" resultMap="kdMap">
+        select * from order_system.kitchen_dish_type where kitchen_ID=#{id}
+    </select>
+
+    <select id="getAllKitchenCanById" resultMap="kdMap">
+        select * from order_system.kitchen_dish_type where dish_type_ID=#{id}
+    </select>
+</mapper>
