@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.njust.dao.AdminMapper">
+    <resultMap id="adminMap" type="Admin">
+        <id property="id" column="ID"></id>
+        <result property="name" column="name"></result>
+        <result property="usr" column="usr"></result>
+        <result property="pwd" column="pwd"></result>
+        <result property="tel" column="tel"></result>
+    </resultMap>
+    <select id="login" resultMap="adminMap">
+        select * from order_system.admin where usr=#{usr}
+    </select>
+
+    <insert id="createAdmin" parameterType="Admin">
+        insert into order_system.admin(name, usr, pwd, tel) VALUES(#{name},#{usr},#{pwd},#{tel})
+    </insert>
+
+    <update id="updateAdmin" parameterType="Admin">
+        update order_system.admin set name=#{name},usr=#{usr},pwd=#{pwd},tel=#{tel} where ID=#{id}
+    </update>
+</mapper>

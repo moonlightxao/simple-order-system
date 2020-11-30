@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.njust.dao.DishMapper">
+    <resultMap id="dishMap" type="Dish">
+        <id property="id" column="ID"></id>
+        <result property="dishTypeId" column="dish_type_ID"></result>
+        <result property="name" column="name"></result>
+        <result property="oldPrice" column="old_price"></result>
+        <result property="nowPrice" column="now_price"></result>
+        <result property="unit" column="unit"></result>
+        <result property="detail" column="detail"></result>
+        <result property="num" column="num"></result>
+        <result property="recommend" column="recommend"></result>
+        <result property="picUrl" column="pic_url"></result>
+        <result property="state" column="state"></result>
+        <result property="comment" column="bz"></result>
+    </resultMap>
+
+    <resultMap id="dishSizeMap" type="DishSize">
+        <id property="id" column="ID"></id>
+        <result property="dishId" column="dish_ID"></result>
+        <result property="name" column="size_name"></result>
+        <result property="oldPrice" column="old_price"></result>
+        <result property="nowPrice" column="now_price"></result>
+    </resultMap>
+
+    <resultMap id="dishTasteMap" type="DishTaste">
+        <id property="id" column="ID"></id>
+        <result property="dishId" column="dish_ID"></result>
+        <result property="taste" column="taste"></result>
+    </resultMap>
+
+    <resultMap id="dishTypeMap" type="DishType">
+        <id property="id" column="ID"></id>
+        <result property="name" column="name"></result>
+    </resultMap>
+
+    <select id="getDishById" resultMap="dishMap">
+        select * from order_system.dish where ID=#{id}
+    </select>
+
+    <select id="allDishes" resultMap="dishMap">
+        select * from order_system.dish
+    </select>
+
+    <select id="allDishByType" resultMap="dishMap">
+        select * from order_system.dish where dish_type_ID=#{id}
+    </select>
+
+    <insert id="addDish" parameterType="Dish">
+        insert into order_system.dish(dish_type_ID, name, old_price, now_price, unit, detail, num, recommend, pic_url, state, bz) values(#{dishTypeId},#{name},#{oldPrice},#{nowPrice},#{unit},#{detail},#{num},#{recommend},#{picUrl},#{state},#{comment})
+    </insert>
+
+    <delete id="deleteDishById">
+        delete from order_system.dish where ID=#{id}
+    </delete>
+
+    <update id="updateDish" parameterType="Dish">
+        update order_system.dish set dish_type_ID=#{dishTypeId},name=#{name},old_price=#{oldPrice},now_price=#{nowPrice},unit=#{unit},detail=#{detail},num=#{num},recommend=#{recommend},pic_url=#{picUrl},state=#{state},bz=#{comment} where ID=#{id} AND dish_type_ID=#{dishTypeId}
+    </update>
+
+    <select id="getDishSizeById" resultMap="dishSizeMap">
+        select * from order_system.dish_size where ID=#{id}
+    </select>
+
+    <insert id="addDishSize" parameterType="DishSize">
+        insert into order_system.dish_size(dish_ID, size_name, old_price, now_price) values(#{dishId},#{name},#{oldPrice},#{nowPrice});
+    </insert>
+
+    <delete id="deleteDishSizeById">
+        delete from order_system.dish_size where ID=#{id}
+    </delete>
+
+    <select id="getDishTasteById" resultMap="dishTasteMap">
+        select * from order_system.dish_taste where ID=#{id}
+    </select>
+
+    <insert id="addDishTaste" parameterType="DishTaste">
+        insert into order_system.dish_taste(dish_ID, taste) values (#{dishId},#{taste});
+    </insert>
+
+    <delete id="deleteDishTasteById">
+        delete from order_system.dish_taste where ID=#{id}
+    </delete>
+
+    <select id="allDishType" resultMap="dishTypeMap">
+        select * from order_system.dish_type
+    </select>
+
+    <select id="getDishTypeById" resultMap="dishTypeMap">
+        select * from order_system.dish_type where ID=#{id}
+    </select>
+
+    <select id="getDishTypeByName" resultMap="dishTypeMap">
+        select * from order_system.dish_type where name=#{name}
+    </select>
+
+    <insert id="addDishType" parameterType="DishType">
+        insert into order_system.dish_type(name) values(#{name});
+    </insert>
+
+    <delete id="deleteDishTypeById">
+        delete from order_system.dish_type where ID=#{id}
+    </delete>
+</mapper>
