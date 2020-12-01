@@ -18,19 +18,17 @@
 
 <body>
 
-<div th:replace="~{commons/commons::navbar}"></div>
+<div th:replace="~{/commons/commons::navbar}"></div>
 
 <div class="container-fluid">
     <div class="row">
-        <div th:replace="~{commons/commons::sidebar(active='main.html')}"></div>
-
+        <div th:replace="~{/commons/commons::sidebar(active='history_bill.html')}"></div>
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                 <h1 class="h2">账单管理</h1>
+                <a th:href="@{/admin/toLivingBill}">查看未结账账单</a>
                 <div class="btn-toolbar mb-2 mb-md-0">
                 </div>
-            </div>
-            <div class="sidebar-sticky" th:replace="~{commons/billCommons::bill_sidebar}" >
             </div>
             <div class="bodyContent" align="center">
                 <table  id="show">
@@ -41,17 +39,16 @@
                         <th>结账时间</th>
                         <th>备注</th>
                     </tr>
-                    <tr>
-                        <td>01</td>
-                        <td>1000</td>
-                        <td>2-26-16:10</td>
-                        <td>2-26-17:10</td>
-                        <td>随便备注</td>
+                    <tr th:each="order:${historyBill}">
+                        <td th:text="${order.getId()}"></td>
+                        <td th:text="${order.getRealPrice()}"></td>
+                        <td th:text="${order.getOrdersTime()}"></td>
+                        <td th:text="${order.getSettleTime()}"></td>
+                        <td th:text="${order.getComment()}"></td>
                     </tr>
                 </table>
                 <button>新增</button>
             </div>
-            <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
 
         </main>
     </div>
@@ -60,19 +57,10 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script th:src="@{/js/vendor/jquery-slim.min.js}"><\/script>')</script>
 <script th:src="@{/js/vendor/popper.min.js}"></script>
 <script th:src="@{/css/bootstrap.min.css}"></script>
 
-<!-- Icons -->
-<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
-<script>
-    feather.replace()
-</script>
-
-<!-- Graphs -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 
 </body>
 </html>
