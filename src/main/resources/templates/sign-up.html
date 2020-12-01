@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" th:href="@{/favicon.ico}">
+
+    <title>注册</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/signin.css}" rel="stylesheet">
+</head>
+
+<body class="text-center">
+    <form method="post" th:action="@{/user/sign_up}">
+        <img class="mb-4" th:src="@{/brand/bootstrap-solid.svg}" alt="" width="72" height="72">
+        <p style="color: red" th:text="${error}" th:if="${not #strings.isEmpty(error)}"></p>
+        <div class="form-group">
+            <label for="exampleInputEmail1">真实姓名</label>
+            <input type="text" name="name" class="form-control" id="exampleInputEmail1" th:placeholder="真实姓名">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">用户名</label>
+            <input type="text" name="usr" class="form-control" id="exampleInputPassword1" th:placeholder="用户名">
+        </div>
+        <div class="form-group">
+            <label for="password1">密码</label>
+            <input type="password" name="pwd" class="form-control" id="password1" th:placeholder="密码">
+        </div>
+        <div class="form-group">
+            <label for="tel1">电话</label>
+            <input type="text" name="tel" class="form-control" id="tel1" th:placeholder="电话">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</body>
+</html>
