@@ -42,6 +42,16 @@ public class BackStageService {
         }else return 1;
     }
 
+    /*注册0表示已存在，1表示成功*/
+    public int signUp(Admin admin){
+        Admin res = adminMapper.getAdminByUsr(admin.getUsr());
+        if(res == null){
+            adminMapper.createAdmin(admin);
+            return 1;
+        }
+        return 0;
+    }
+
     /*菜品类型维护业务，主要负责菜品的增删改查*/
     /*1.查找所有的菜品类型*/
     public List<DishType> allDishType(){
@@ -76,6 +86,7 @@ public class BackStageService {
         return dishMapper.updateDish(dish);
     }
 
+
     /*餐桌管理业务*/
     /*1.返回所有的餐桌信息*/
     public List<Tables> allTables(){
@@ -105,7 +116,13 @@ public class BackStageService {
     /*账单管理业务*/
     /*1.查询所有的历史账单*/
     public List<Orders> historyOrders(){
-        return ordersMapper.allOrders();
+        List<Orders> list = new LinkedList<>();
+        for(Orders orders: ordersMapper.allOrders()){
+            if(orders.getState() == 1){
+                list.add(orders);
+            }
+        }
+        return list;
     }
 
     /*2.查询还没结账的账单*/
@@ -118,4 +135,7 @@ public class BackStageService {
         }
         return list;
     }
+
+
+
 }

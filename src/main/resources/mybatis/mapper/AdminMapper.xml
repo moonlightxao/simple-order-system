@@ -21,4 +21,8 @@
     <update id="updateAdmin" parameterType="Admin">
         update order_system.admin set name=#{name},usr=#{usr},pwd=#{pwd},tel=#{tel} where ID=#{id}
     </update>
+
+    <select id="getAdminByUsr" resultMap="adminMap">
+        select * from order_system.admin where usr=#{usr}
+    </select>
 </mapper>

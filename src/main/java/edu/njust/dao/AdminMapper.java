@@ -13,4 +13,6 @@ public interface AdminMapper {
 
     boolean updateAdmin(Admin admin);
 
+    Admin getAdminByUsr(String usr);
+
 }
