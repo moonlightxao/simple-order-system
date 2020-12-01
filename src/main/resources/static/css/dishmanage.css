@@ -1,8 +1,19 @@
+#main {
+    float: none;
+}
+#second_sidbar {
+    float: left;
+}
+#none {
+    width: 800px;
+    float: left;
+}
 .box {
-    width: 100%;
+    height: 2000px;
+    width: 780px;
     border-color: pink;
     margin: 0 auto;
-    float:none;
+    float: none;
 }
 .box>li {
     width: 150px;
@@ -10,6 +21,7 @@
     background-color: pink;
     float: left;
     margin-right: 4px;
+    margin-bottom: 4px;
     list-style: none;
 }
 .dish_picture {
