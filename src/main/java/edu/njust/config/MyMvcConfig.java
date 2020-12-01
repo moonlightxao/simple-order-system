@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class MyMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoginHandleInterceptor()).addPathPatterns("/**").excludePathPatterns("/user/sign_up","/user/login","/","/static/*","/sign-in.html");
+        registry.addInterceptor(new LoginHandleInterceptor()).addPathPatterns("/**").excludePathPatterns("/user/sign_up","/user/login","/","/static/*","/css/**","/brand/**","/img/**","/js/**","/pic/**","/scss/**","/sign-in.html");
 
     }
 
@@ -17,7 +17,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("sign-in");
         registry.addViewController("/sign-in.html").setViewName("sign-in");
-        registry.addViewController("/main.html").setViewName("dashboard");
+        registry.addViewController("/main.html").setViewName("backstage/dashboard");
         registry.addViewController("/sign-up.html").setViewName("sign-up");
     }
 }
