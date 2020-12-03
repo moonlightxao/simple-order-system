@@ -1,0 +1,144 @@
+ul a {
+    text-decoration: none;
+    color: black;
+}
+ul a:hover {
+    text-decoration: none;
+    color: black;
+}
+a:link{text-decoration:none; }  /* 指正常的未被访问过的链接*/
+
+a:visited{text-decoration:none; }/*指已经访问过的链接*/
+
+a:hover{text-decoration:none;}/*指鼠标在链接*/
+
+a:active{text-decoration:none;}/* 指正在点的链接*/
+
+.diancan-main {
+    height: 100vh;
+    /*overflow: hidden;*/
+}
+.message {
+    height: 14%;
+    background-color: #483c30;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+}
+.aaatitle {
+    font-size: 30px;
+    color: white;
+    margin-left: 30px;
+}
+
+.main-body {
+    height: 78%;
+    /*background-color: #5e5e5e;*/
+}
+
+.main-body .category-list {
+    height: 100%;
+    background-color: #e9eaec;
+    overflow: auto;
+    scrollbar-width: none;
+    -ms-overflow-style:none;
+}
+.main-body .category-list::-webkit-scrollbar {
+    display: none;
+}
+.list-group-item {
+    border: none;
+    background-color: transparent;
+}
+.main-body .content {
+    height: 100%;
+    /*background-color: #255625;*/
+    overflow: auto;
+    scrollbar-width: none;
+    -ms-overflow-style:none;
+}
+.main-body .content::-webkit-scrollbar {
+    display: none;
+}
+
+.pay {
+    height: 8%;
+    background-color: #0c0c0e;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-card,.item-card .box1 {
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-card img {
+    width: 126px;
+    height: 126px;
+    display: inline-block;
+    border-radius: 6px;
+}
+
+.item-card .instr {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.item-card .instr .title {
+    font-size: 20px;
+}
+
+.item-card .instr .short-show {
+    font-size: 10px;
+}
+
+.item-card .instr .other span {
+    font-size: 12px;
+}
+
+.item-card .instr .other {
+    margin-bottom: 10px;
+}
+
+.item-card .instr .price {
+    font-size: 20px;
+    color: red;
+}
+
+.item-card .instr .old-price {
+    font-size: 16px;
+    color: #c0c0c0;
+    text-decoration: line-through;
+    display: inline-block;
+}
+
+.item-card .instr .unit {
+    font-size: 16px;
+    color: #c0c0c0;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.item-card .pay {
+    display: inline-block;
+    text-align: right;
+}
+
+.price-all {
+    display: inline-block;
+    margin-right: 5px;
+    color: red;
+}
+
+.jiesuan {
+    background-color: #e6c13f;
+}
+
+.glyphicon-shopping-cart {
+    color: #ab7f38;
+}

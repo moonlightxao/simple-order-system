@@ -42,8 +42,7 @@ class OrdersystemApplicationTests {
 
     @Test
     void testAdminMapper(){
-        Admin admin = adminMapper.login("admin1");
-        admin.setName("李四");
+        Admin admin = new Admin(1,"罗翔","admin","54321","111");
         adminMapper.updateAdmin(admin);
     }
 

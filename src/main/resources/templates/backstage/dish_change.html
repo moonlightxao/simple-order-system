@@ -1,10 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" th:href="@{/favicon.ico}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/form.css}">
+    <title>菜品管理</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
 </head>
+
 <body>
+
+<div th:replace="~{commons/commons::navbar}"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="~{commons/commons::sidebar(active='account.html')}"></div>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <form method="post" th:action="@{/admin/modifyAccount}">
+                <input type="hidden" name="id" th:value="">
+                <div class="form-group">
+                    <label for="dish_id">编号</label>
+                    <input type="text" name="dish_id" class="form-control" id="dish_id" value="" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="dish_name">菜品名称</label>
+                    <input type="text" name="dish_name" class="form-control" id="dish_name" value="" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="history_p">原价</label>
+                    <input type="text" name="history_p" class="form-control" id="history_p" value="" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="now_p">现价</label>
+                    <input type="text" name="now_p" class="form-control" id="now_p" value="" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="unit">单位</label>
+                    <input type="text" name="unit" class="form-control" id="unit" value="" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="info">详细信息</label>
+                    <input type="text" name="info" class="form-control" id="info" value="" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="counts">库存数量</label>
+                    <input type="text" name="counts" class="form-control" id="counts" value="" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="special">特色菜</label>
+                    <input type="text" name="special" class="form-control" id="special" value="" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="status">状态</label>
+                    <input type="text" name="status" class="form-control" id="status" value="" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="bz">备注</label>
+                    <input type="text" name="bz" class="form-control" id="bz" value="" required="required">
+                </div>
+
+                <button type="submit" class="btn btn-default">确认修改</button>
+            </form>
+
+        </main>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script>window.jQuery || document.write('<script th:src="@{/js/vendor/jquery-slim.min.js}"><\/script>')</script>
+<script th:src="@{/js/vendor/popper.min.js}"></script>
+<script th:src="@{/css/bootstrap.min.css}"></script>
 
 </body>
 </html>
