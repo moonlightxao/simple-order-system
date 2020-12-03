@@ -1,9 +1,6 @@
 package edu.njust.service;
 
-import edu.njust.dao.AdminMapper;
-import edu.njust.dao.DishMapper;
-import edu.njust.dao.OrdersMapper;
-import edu.njust.dao.TableMapper;
+import edu.njust.dao.*;
 import edu.njust.pojo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,7 +39,7 @@ public class BackStageService {
         }else return 1;
     }
 
-    /*注册0表示已存在，1表示成功*/
+    /*1.注册0表示已存在，1表示成功*/
     public int signUp(Admin admin){
         Admin res = adminMapper.getAdminByUsr(admin.getUsr());
         if(res == null){
@@ -51,6 +48,17 @@ public class BackStageService {
         }
         return 0;
     }
+
+    /*2.修改账号业务*/
+    public boolean updateAccount(Admin admin){
+        return adminMapper.updateAdmin(admin);
+    }
+
+    /*3.根据用户名查询用户*/
+    public Admin getAdminByUsr(String usr){
+        return adminMapper.getAdminByUsr(usr);
+    }
+
 
     /*菜品类型维护业务，主要负责菜品的增删改查*/
     /*1.查找所有的菜品类型*/
@@ -84,6 +92,11 @@ public class BackStageService {
     /*6.在某一菜品类型目录下更新一个菜品*/
     public boolean updateDish(Dish dish){
         return dishMapper.updateDish(dish);
+    }
+
+    /*7.根据菜品类型编号查询菜品*/
+    public DishType getDishTypeById(int id){
+        return dishMapper.getDishTypeById(id);
     }
 
 
@@ -135,7 +148,6 @@ public class BackStageService {
         }
         return list;
     }
-
 
 
 }

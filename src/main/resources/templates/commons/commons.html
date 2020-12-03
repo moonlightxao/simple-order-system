@@ -35,22 +35,17 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:class="${active=='dishManage.html'?'nav-link active':'nav-link'}" th:href="@{/admin/DishType}">
+                <a th:class="${active=='dishManage.html'?'nav-link active':'nav-link'}" th:href="@{/admin/DishType}">
                     菜品管理
                 </a>
             </li>
             <li class="nav-item">
-                <a th:class="${active=='list.html'?'nav-link active':'nav-link'}" th:href="@{/emps}">
-                    厨房管理
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a th:class="${active=='table.html'?'nav-link active':'nav-link'}" th:href="@{/admin/toManageTable}">
                     餐桌状态
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a th:class="${active=='account.html'?'nav-link active':'nav-link'}" th:href="@{/admin/toModifyAccount}">
                     账号管理
                 </a>
             </li>
@@ -85,34 +80,6 @@
                 <a class="nav-link" href="#">
                     <span data-feather="file-text"></span>
                     Year-end sale
-                </a>
-            </li>
-        </ul>
-    </div>
-</nav>
-
-<nav class="col-md-2 d-none d-md-block bg-light sidebar" >
-    <div class="sidebar-sticky" >
-        <ul class="nav flex-column"  th:fragment="second_sidebar" style="float:left;width: 100px">
-            <li class="nav-item">
-                <a th:class="${active=='main.html'?'nav-link active':'nav-link'}" href="#meat">
-                    <span data-feather="home"></span>
-                    肉类 <span class="sr-only">(current)</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a th:class="${active=='history_bill.html'?'nav-link active':'nav-link'}" href="#notmeat">
-                    素菜
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:class="${active=='dishManage.html'?'nav-link active':'nav-link'}" th:href="@{/admin/DishType}">
-                    小吃
-                </a>
-            </li>
-            <li class="nav-item">
-                <a th:class="${active=='list.html'?'nav-link active':'nav-link'}" th:href="@{/emps}">
-                    饮品
                 </a>
             </li>
         </ul>

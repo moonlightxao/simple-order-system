@@ -33,29 +33,13 @@
                 </div>
             </div>
             <div id="main" style="float:none;width: 100%">
-                <ul class="sidebar-sticky" th:replace="~{commons/commons::second_sidebar}" id="second_sidbar" style="float:left;">
+                <ul class="nav flex-column"  th:each="type:${types}" style="float:left;width: 100px">
+                    <li class="nav-item">
+                        <a th:href="@{'/admin/queryDish?typeId='+${type.getId()}}" th:text="${type.getName()}"></a>
+                    </li>
                 </ul>
-                <ul class="box" th:each="dish:${types}" style="float: left">
-                    <li id="meat"><div class="dish_picture">picture1</div><div class ="dish_name">菜名1</div><button>修改</button></li>
-                    <li ><div class="dish_picture">picture2</div><div class ="dish_name">菜名2</div><button>修改</button></li>
-                    <li ><div class="dish_picture">picture3</div><div class ="dish_name">菜名3</div><button>修改</button></li>
-                    <li><div class="dish_picture">picture4</div><div class ="dish_name">菜名4</div><button>修改</button></li>
-                    <li ><div class="dish_picture">picture1</div><div class ="dish_name">菜名1</div><button>修改</button></li>
-                    <li ><div class="dish_picture">picture2</div><div class ="dish_name">菜名2</div><button>修改</button></li>
-                    <li ><div class="dish_picture">picture3</div><div class ="dish_name">菜名3</div><button>修改</button></li>
-                    <li><div class="dish_picture">picture4</div><div class ="dish_name">菜名4</div><button>修改</button></li>
-                    <li ><div class="dish_picture">picture1</div><div class ="dish_name">菜名1</div><button>修改</button></li>
-                    <li ><div class="dish_picture">picture2</div><div class ="dish_name">菜名2</div><button>修改</button></li>
-                    <li ><div class="dish_picture">picture3</div><div class ="dish_name">菜名3</div><button>修改</button></li>
-                    <li><div class="dish_picture">picture4</div><div class ="dish_name">菜名4</div><button>修改</button></li>
-                    <li ><div class="dish_picture">picture1</div><div class ="dish_name">菜名1</div><button>修改</button></li>
-                    <li ><div class="dish_picture">picture2</div><div class ="dish_name">菜名2</div><button>修改</button></li>
-                    <li ><div class="dish_picture">picture3</div><div class ="dish_name">菜名3</div><button>修改</button></li>
-                    <li><div class="dish_picture">picture4</div><div class ="dish_name">菜名4</div><button>修改</button></li>
-                    <li id="notmeat"><div class="dish_picture">picture1</div><div class ="dish_name">这才不是肉</div><button>修改</button></li>
-                    <li ><div class="dish_picture">picture2</div><div class ="dish_name">菜名2</div><button>修改</button></li>
-                    <li ><div class="dish_picture">picture3</div><div class ="dish_name">菜名3</div><button>修改</button></li>
-                    <li><div class="dish_picture">picture4</div><div class ="dish_name">菜名4</div><button>修改</button></li>
+                <ul class="box"  style="float: left" th:each="d:${dishByType}">
+                    <li><div class="dish_picture">picture1</div><div class ="dish_name" th:text="${d.getName()}"></div><button>修改</button></li>
                 </ul>
             </div >
         </main>
@@ -66,7 +50,7 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script>window.jQuery || document.write('<script th:src="@{/js/vendor/jquery-slim.min.js}"><\/script>')</script>
-<script th:src="@{/static/js/vendor/popper.min.js}"></script>
-<script th:src="@{/static/css/bootstrap.min.css}"></script>
+<script th:src="@{/js/vendor/popper.min.js}"></script>
+<script th:src="@{/css/bootstrap.min.css}"></script>
 </body>
 </html>
