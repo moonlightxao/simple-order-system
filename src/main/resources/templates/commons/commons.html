@@ -35,22 +35,17 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:class="${active=='dishManage.html'?'nav-link active':'nav-link'}" th:href="@{/admin/DishType}">
+                <a th:class="${active=='dishManage.html'?'nav-link active':'nav-link'}" th:href="@{/admin/DishType}">
                     菜品管理
                 </a>
             </li>
             <li class="nav-item">
-                <a th:class="${active=='list.html'?'nav-link active':'nav-link'}" th:href="@{/emps}">
-                    厨房管理
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a th:class="${active=='table.html'?'nav-link active':'nav-link'}" th:href="@{/admin/toManageTable}">
                     餐桌状态
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a th:class="${active=='account.html'?'nav-link active':'nav-link'}" th:href="@{/admin/toModifyAccount}">
                     账号管理
                 </a>
             </li>
@@ -90,5 +85,7 @@
         </ul>
     </div>
 </nav>
+
+
 </body>
 </html>
