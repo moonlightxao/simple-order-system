@@ -99,6 +99,11 @@ public class BackStageService {
         return dishMapper.getDishTypeById(id);
     }
 
+    /*8.查询所有的菜品*/
+    public List<Dish> getAllDishes(){
+        return dishMapper.allDishes();
+    }
+
 
     /*餐桌管理业务*/
     /*1.返回所有的餐桌信息*/
