@@ -36,9 +36,30 @@ public class ManageController {
     @RequestMapping("/queryDish")
     public String queryDish(DishType type, Model model){
         System.out.println(type);
+        List<DishType> all = service.allDishType();
         List<Dish> list = service.allDishByType(type);
         if(list != null){
+            model.addAttribute("type",all);
             model.addAttribute("dishByType",list);
+            return "backstage/dishManage";
+        }
+        return "admin/DishType";
+    }
+
+    /*处理到新增菜品页面的请求*/
+    @RequestMapping("/toCreateDish")
+    public String toCreateDish(Model model){
+        List<DishType> allType = service.allDishType();
+        model.addAttribute("type",allType);
+        return "backstage/xxx";
+    }
+
+    /*处理新增菜品的请求*/
+    @RequestMapping("/createDish")
+    public String createDish(Dish dish, Model model){
+        boolean flag = service.addDish(dish);
+        if(flag == false){
+            model.addAttribute("msg","添加错误");
             return "";
         }
         return "";
@@ -59,4 +80,5 @@ public class ManageController {
         model.addAttribute("livingBill",list);
         return "backstage/live_bill";
     }
+
 }
