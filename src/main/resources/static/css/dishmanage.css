@@ -1,8 +1,18 @@
+#main {
+    float: none;
+}
+#second_sidbar {
+    float: left;
+}
+#none {
+    float: left;
+}
 .box {
+    height: 2000px;
     width: 100%;
     border-color: pink;
     margin: 0 auto;
-    float:none;
+    float: none;
 }
 .box>li {
     width: 150px;

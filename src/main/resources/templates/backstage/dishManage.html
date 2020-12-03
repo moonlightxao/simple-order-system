@@ -6,19 +6,20 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" th:href="@{/favicon.ico}">
-
-    <title>Dashboard Template for Bootstrap</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/form.css}">
+    <title>菜品管理</title>
 
     <!-- Bootstrap core CSS -->
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link th:href="@{/css/dashboard.css}" rel="stylesheet">
-    <link th:href="@{/css/box.css}" rel="stylesheet">
+    <link th:href="@{/css/dishmanage.css}" rel="stylesheet">
 </head>
 
 <body>
-
+<div class="sidebar-sticky" th:replace="~{commons/commons::sidebar}" >
+</div>
 <div th:replace="~{commons/commons::navbar}"></div>
 
 <div class="container-fluid">
@@ -31,16 +32,31 @@
                 <div class="btn-toolbar mb-2 mb-md-0" >
                 </div>
             </div>
-            <div class="sidebar-sticky" th:replace="~{commons/commons::sidebar}" >
-            </div>
-            <div  style="width: 100%;height: 100%">
-                <ul class="box" th:each="dish:${types}">
+            <div id="main" style="float:none;width: 100%">
+                <ul class="sidebar-sticky" th:replace="~{commons/commons::second_sidebar}" id="second_sidbar" style="float:left;">
+                </ul>
+                <ul class="box" th:each="dish:${types}" style="float: left">
+                    <li id="meat"><div class="dish_picture">picture1</div><div class ="dish_name">菜名1</div><button>修改</button></li>
+                    <li ><div class="dish_picture">picture2</div><div class ="dish_name">菜名2</div><button>修改</button></li>
+                    <li ><div class="dish_picture">picture3</div><div class ="dish_name">菜名3</div><button>修改</button></li>
+                    <li><div class="dish_picture">picture4</div><div class ="dish_name">菜名4</div><button>修改</button></li>
                     <li ><div class="dish_picture">picture1</div><div class ="dish_name">菜名1</div><button>修改</button></li>
                     <li ><div class="dish_picture">picture2</div><div class ="dish_name">菜名2</div><button>修改</button></li>
                     <li ><div class="dish_picture">picture3</div><div class ="dish_name">菜名3</div><button>修改</button></li>
                     <li><div class="dish_picture">picture4</div><div class ="dish_name">菜名4</div><button>修改</button></li>
+                    <li ><div class="dish_picture">picture1</div><div class ="dish_name">菜名1</div><button>修改</button></li>
+                    <li ><div class="dish_picture">picture2</div><div class ="dish_name">菜名2</div><button>修改</button></li>
+                    <li ><div class="dish_picture">picture3</div><div class ="dish_name">菜名3</div><button>修改</button></li>
+                    <li><div class="dish_picture">picture4</div><div class ="dish_name">菜名4</div><button>修改</button></li>
+                    <li ><div class="dish_picture">picture1</div><div class ="dish_name">菜名1</div><button>修改</button></li>
+                    <li ><div class="dish_picture">picture2</div><div class ="dish_name">菜名2</div><button>修改</button></li>
+                    <li ><div class="dish_picture">picture3</div><div class ="dish_name">菜名3</div><button>修改</button></li>
+                    <li><div class="dish_picture">picture4</div><div class ="dish_name">菜名4</div><button>修改</button></li>
+                    <li id="notmeat"><div class="dish_picture">picture1</div><div class ="dish_name">这才不是肉</div><button>修改</button></li>
+                    <li ><div class="dish_picture">picture2</div><div class ="dish_name">菜名2</div><button>修改</button></li>
+                    <li ><div class="dish_picture">picture3</div><div class ="dish_name">菜名3</div><button>修改</button></li>
+                    <li><div class="dish_picture">picture4</div><div class ="dish_name">菜名4</div><button>修改</button></li>
                 </ul>
-
             </div >
         </main>
     </div>
