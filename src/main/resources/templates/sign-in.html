@@ -6,25 +6,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" th:href="@{/favicon.ico}">
-
     <title>登录</title>
-
-    <!-- Bootstrap core CSS -->
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
     <link th:href="@{/css/signin.css}" rel="stylesheet">
   </head>
 
-  <body class="text-center">
+  <body class="text-center box" >
     <form class="form-signin" th:action="@{/user/login}">
-      <img class="mb-4" th:src="@{/brand/bootstrap-solid.svg}" alt="" width="72" height="72">
-        <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+      <h1>login</h1>
       <input type="text" name="usr" id="inputUsr" class="form-control" th:placeholder="用户名" required autofocus>
       <input type="password" name="pwd" id="inputPassword" class="form-control" th:placeholder="密码" required>
       <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
-      <a th:href="@{/sign-up.html}" class="btn btn-primary btn-lg active" role="button">注册账号</a>
-      <p class="mt-5 mb-3 text-muted">&copy; 2020-2021</p>
+      <a th:href="@{/sign-up.html}">注册</a>
     </form>
   </body>
 </html>
