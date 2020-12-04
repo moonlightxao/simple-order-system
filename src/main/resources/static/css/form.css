@@ -59,6 +59,26 @@ body {
     color:white;
     background-color: gray;
 }
+.mybtn{
+    border-radius:3px;
+    border-width:2px;
+    background-color: gainsboro;
+}
+.mybtn:hover{
+    border-width:2px;
+    border-color:#b3d7ff;
+    background-color:lightgrey;
+}
+.mybtn:active {
+    border-radius:3px;
+    border-color: #b3d7ff;
+    border-style: solid;
+}
+.mybtn:visited {
+    border-width:2px;
+    border-color:#b3d7ff;
+    background-color:lightgrey;
+}
 #user >a {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: bolder;
@@ -94,6 +114,13 @@ body {
     padding-bottom:4px;
     background-color:gray;
     color:#ffffff;
+}
+#show td {
+    min-height: 60px;
+}
+a:hover{
+    text-decoration: none;
+
 }
 #show tr.alt td
 {

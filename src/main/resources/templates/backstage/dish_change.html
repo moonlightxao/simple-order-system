@@ -22,44 +22,54 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div th:replace="~{commons/commons::sidebar(active='table.html')}"></div>
-
+        <div th:replace="~{commons/commons::sidebar(active='account.html')}"></div>
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                <h1 class="h2">菜品管理</h1>
-                <div class="btn-toolbar mb-2 mb-md-0">
+            <form method="post" th:action="@{/admin/modifyAccount}">
+                <input type="hidden" name="id" th:value="">
+                <div class="form-group">
+                    <label for="dish_id">编号</label>
+                    <input type="text" name="dish_id" class="form-control" id="dish_id" value="" required="required">
                 </div>
-            </div>
-            <div class="bodyContent" align="center">
-                <table id="show" th:each="">
-                    <tr>
-                        <th>编号</th>
-                        <th>菜品名称</th>
-                        <th>原价</th>
-                        <th>现价</th>
-                        <th>单位</th>
-                        <th>详细信息</th>
-                        <th>库存数量</th>
-                        <th>特色菜</th>
-                        <th>状态</th>
-                        <th>备注</th>
-                        <th>操作</th>
-                    </tr>
-                    <tr>
-                        <td th:text=""></td>
-                        <td><input value="菜品名称" name="dish_name"></td>
-                        <td><input value="原价" name="max"></td>
-                        <td><input value="现价" name="min"></td>
-                        <td><input value="单位" name="unit"></td>
-                        <td><input value="详细信息" name="status"></td>
-                        <td><input value="库存数量" name="txt"></td>
-                        <td><input value="特色菜" name="op"></td>
-                        <td><input value="状态" name="status"></td>
-                        <td><input value="备注" name="txt"></td>
-                        <td><button>确认修改</button></td>
-                    </tr>
-                </table>
-            </div>
+                <div class="form-group">
+                    <label for="dish_name">菜品名称</label>
+                    <input type="text" name="dish_name" class="form-control" id="dish_name" value="" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="history_p">原价</label>
+                    <input type="text" name="history_p" class="form-control" id="history_p" value="" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="now_p">现价</label>
+                    <input type="text" name="now_p" class="form-control" id="now_p" value="" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="unit">单位</label>
+                    <input type="text" name="unit" class="form-control" id="unit" value="" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="info">详细信息</label>
+                    <input type="text" name="info" class="form-control" id="info" value="" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="counts">库存数量</label>
+                    <input type="text" name="counts" class="form-control" id="counts" value="" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="special">特色菜</label>
+                    <input type="text" name="special" class="form-control" id="special" value="" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="status">状态</label>
+                    <input type="text" name="status" class="form-control" id="status" value="" required="required">
+                </div>
+                <div class="form-group">
+                    <label for="bz">备注</label>
+                    <input type="text" name="bz" class="form-control" id="bz" value="" required="required">
+                </div>
+
+                <button type="submit" class="btn btn-default">确认修改</button>
+            </form>
+
         </main>
     </div>
 </div>
