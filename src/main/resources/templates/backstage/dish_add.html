@@ -26,39 +26,32 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                <h1 class="h2">餐桌管理</h1>
+                <h1 class="h2">添加菜品/h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                 </div>
             </div>
             <div class="bodyContent" align="center">
-                <table id="show" th:each="">
-                    <tr>
-                        <th>编号</th>
-                        <th>菜品名称</th>
-                        <th>原价</th>
-                        <th>现价</th>
-                        <th>单位</th>
-                        <th>详细信息</th>
-                        <th>库存数量</th>
-                        <th>特色菜</th>
-                        <th>状态</th>
-                        <th>备注</th>
-                        <th>操作</th>
-                    </tr>
-                    <tr>
-                        <td th:text=""></td>
-                        <td><input value="" name="dish_name"></td>
-                        <td><input value="" name="max"></td>
-                        <td><input value="" name="min"></td>
-                        <td><input value="" name="unit"></td>
-                        <td><input value="" name="status"></td>
-                        <td><input value="" name="txt"></td>
-                        <td><input value="" name="op"></td>
-                        <td><input value="" name="status"></td>
-                        <td><input value="" name="txt"></td>
-                        <td><button>确认添加</button></td>
-                    </tr>
-                </table>
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">File input</label>
+                        <input type="file" id="exampleInputFile">
+                        <p class="help-block">Example block-level help text here.</p>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Check me out
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
             </div>
         </main>
     </div>
