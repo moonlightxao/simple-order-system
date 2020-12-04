@@ -50,8 +50,8 @@ public class ManageController {
     @RequestMapping("/toCreateDish")
     public String toCreateDish(Model model){
         List<DishType> allType = service.allDishType();
-        model.addAttribute("type",allType);
-        return "backstage/xxx";
+        model.addAttribute("types",allType);
+        return "backstage/dish_add";
     }
 
     /*处理新增菜品的请求*/
