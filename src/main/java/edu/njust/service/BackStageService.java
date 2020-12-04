@@ -104,6 +104,18 @@ public class BackStageService {
         return dishMapper.allDishes();
     }
 
+    /*9.按照菜品类型查询所有的菜品*/
+    public List<DishesWithType> getAllDishesWithType(){
+        List<DishType> types = dishMapper.allDishType();
+        List<DishesWithType> list = new LinkedList<>();
+        for(DishType type:types){
+            List<Dish> dishes = dishMapper.allDishByType(type.getId());
+            DishesWithType dishesWithType = new DishesWithType(type,dishes);
+            list.add(dishesWithType);
+        }
+        return list;
+    }
+
 
     /*餐桌管理业务*/
     /*1.返回所有的餐桌信息*/

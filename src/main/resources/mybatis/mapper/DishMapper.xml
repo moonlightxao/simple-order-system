@@ -65,6 +65,10 @@
         select * from order_system.dish_size where ID=#{id}
     </select>
 
+    <select id="getAllDishSizeByDishId" resultMap="dishSizeMap">
+        select * from order_system.dish_size where dish_ID=#{id}
+    </select>
+
     <insert id="addDishSize" parameterType="DishSize">
         insert into order_system.dish_size(dish_ID, size_name, old_price, now_price) values(#{dishId},#{name},#{oldPrice},#{nowPrice});
     </insert>
@@ -75,6 +79,10 @@
 
     <select id="getDishTasteById" resultMap="dishTasteMap">
         select * from order_system.dish_taste where ID=#{id}
+    </select>
+
+    <select id="getAllDishTasteByDishId" resultMap="dishTasteMap">
+        select * from order_system.dish_taste where dish_ID=#{id}
     </select>
 
     <insert id="addDishTaste" parameterType="DishTaste">

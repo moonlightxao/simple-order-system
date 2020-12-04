@@ -1,15 +1,21 @@
 package edu.njust.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import edu.njust.pojo.Dish;
 import edu.njust.pojo.DishType;
 import edu.njust.pojo.DishesWithType;
 import edu.njust.service.BackStageService;
 import edu.njust.service.CustomerService;
+import edu.njust.utils.ResponseWrite;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.*;
 
 @Controller
@@ -21,19 +27,26 @@ public class CustomerController {
     @Autowired
     private BackStageService service;
 
-    /*处理顾客端页面菜单初始化的请求*/
+    /*处理初始化点餐页面的请求*/
     @RequestMapping("/menu")
-    public String toMenu(Model model){
-        List<DishType> allTypes = service.allDishType();
-        List<DishesWithType> allDishes = new LinkedList<>();
-        for(DishType type:allTypes){
-            List<Dish> dishes = service.allDishByType(type);
-            DishesWithType dishesWithType = new DishesWithType(type,dishes);
-            allDishes.add(dishesWithType);
+    public String toMenu(HttpServletResponse response) throws IOException {
+        List<DishType> dishTypes = service.allDishType();
+        List<DishesWithType> dishesWithTypes = service.getAllDishesWithType();
+        if(dishesWithTypes == null){
+            System.out.println("dishesWithTypes == null");
+        }else{
+            System.out.println("dishesWithTypes != null");
         }
-        model.addAttribute("types",allTypes);
-        model.addAttribute("dishes",allDishes);
-        return "order";
+        JSONObject jsonObject = new JSONObject();
+        JSONObject jsonObject1 = new JSONObject();
+        JSONArray jsonArray = new JSONArray();
+        jsonObject.put("dishType",dishTypes);
+        jsonObject1.put("dishes",dishesWithTypes);
+        jsonArray.add(jsonObject);
+        jsonArray.add(jsonObject1);
+        System.out.println(jsonArray);
+        ResponseWrite.writeJSON(response,jsonArray);
+        return null;
     }
 
 
@@ -45,6 +58,5 @@ public class CustomerController {
     public String orderDish(int tableId, String numOfDishes, Model model){
         return "";
     }
-
     /*处理顾客的加菜请求*/
 }

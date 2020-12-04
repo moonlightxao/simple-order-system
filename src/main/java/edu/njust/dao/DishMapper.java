@@ -37,6 +37,9 @@ public interface DishMapper {
     /*根据编号查找一个菜品大小*/
     DishSize getDishSizeById(int id);
 
+    /*根据菜品编号查询其所有的菜品大小*/
+    List<DishSize> getAllDishSizeByDishId(@Param("id") int dishId);
+
     /*删除一个菜品大小记录*/
     boolean deleteDishSizeById(int id);
 
@@ -45,6 +48,9 @@ public interface DishMapper {
 
     /*根据编号查找一个菜品口味*/
     DishTaste getDishTasteById(int id);
+
+    /*根据菜品编号查询其所有的菜品大小*/
+    List<DishTaste> getAllDishTasteByDishId(@Param("id") int dishId);
 
     /*删除一个菜品口味记录*/
     boolean deleteDishTasteById(int id);
