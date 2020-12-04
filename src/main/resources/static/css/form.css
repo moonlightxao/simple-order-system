@@ -53,6 +53,8 @@ body {
     padding: 14px 16px;
     text-decoration: none;
 }
+.in {
+}
 .nav>li>a:hover {
     color:white;
     background-color: gray;

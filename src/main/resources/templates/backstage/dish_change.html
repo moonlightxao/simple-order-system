@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" th:href="@{/favicon.ico}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/form.css}">
-    <title>活账单</title>
+    <title>菜品管理</title>
 
     <!-- Bootstrap core CSS -->
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
@@ -22,35 +22,44 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div th:replace="~{commons/commons::sidebar(active='main.html')}"></div>
+        <div th:replace="~{commons/commons::sidebar(active='table.html')}"></div>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                <h1 class="h2">账单管理</h1>
-                <a th:href="@{/admin/toHistoryBill}">查看历史账单</a>
+                <h1 class="h2">菜品管理</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                 </div>
             </div>
             <div class="bodyContent" align="center">
-                <a th:href="@{/admin/tohistoryBill}">查看历史账单</a>
-                <table  id="show">
+                <table id="show" th:each="">
                     <tr>
                         <th>编号</th>
-                        <th>总价(￥)</th>
-                        <th>下单时间</th>
+                        <th>菜品名称</th>
+                        <th>原价</th>
+                        <th>现价</th>
+                        <th>单位</th>
+                        <th>详细信息</th>
+                        <th>库存数量</th>
+                        <th>特色菜</th>
+                        <th>状态</th>
                         <th>备注</th>
                         <th>操作</th>
                     </tr>
-                    <tr th:each="order:${livingBill}">
-                        <td th:text="${order.getId()}"></td>
-                        <td th:text="${order.getRealPrice()}"></td>
-                        <td th:text="${order.getSettleTime()}"></td>
-                        <td th:text="${order.getComment()}"></td>
-                        <td><button>结账</button></td>
+                    <tr>
+                        <td th:text=""></td>
+                        <td><input value="菜品名称" name="dish_name"></td>
+                        <td><input value="原价" name="max"></td>
+                        <td><input value="现价" name="min"></td>
+                        <td><input value="单位" name="unit"></td>
+                        <td><input value="详细信息" name="status"></td>
+                        <td><input value="库存数量" name="txt"></td>
+                        <td><input value="特色菜" name="op"></td>
+                        <td><input value="状态" name="status"></td>
+                        <td><input value="备注" name="txt"></td>
+                        <td><button>确认修改</button></td>
                     </tr>
                 </table>
             </div>
-
         </main>
     </div>
 </div>

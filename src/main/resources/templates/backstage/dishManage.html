@@ -36,9 +36,18 @@
                 <ul class="nav flex-column"  th:each="type:${types}" style="float:left;width: 100px">
                     <li class="nav-item">
                         <a th:href="@{'/admin/queryDish?typeId='+${type.getId()}}" th:text="${type.getName()}"></a>
+                        <a th:href="@{'/admin/queryDish?typeId='+${type.getId()}}" th:text="${type.getName()}"></a>
+                        <a th:href="@{'/admin/queryDish?typeId='+${type.getId()}}" th:text="${type.getName()}"></a>
+                        <a th:href="@{'/admin/queryDish?typeId='+${type.getId()}}" th:text="${type.getName()}"></a>
+                        <a th:href="@{'/admin/queryDish?typeId='+${type.getId()}}" th:text="${type.getName()}"></a>
                     </li>
                 </ul>
                 <ul class="box"  style="float: left" th:each="d:${dishByType}">
+                    <li><div class="dish_picture">picture1</div><div class ="dish_name" th:text="${d.getName()}"></div><button>修改</button></li>
+                    <li><div class="dish_picture">picture1</div><div class ="dish_name" th:text="${d.getName()}"></div><button>修改</button></li>
+                    <li><div class="dish_picture">picture1</div><div class ="dish_name" th:text="${d.getName()}"></div><button>修改</button></li>
+                    <li><div class="dish_picture">picture1</div><div class ="dish_name" th:text="${d.getName()}"></div><button>修改</button></li>
+                    <li><div class="dish_picture">picture1</div><div class ="dish_name" th:text="${d.getName()}"></div><button>修改</button></li>
                     <li><div class="dish_picture">picture1</div><div class ="dish_name" th:text="${d.getName()}"></div><button>修改</button></li>
                 </ul>
             </div >
