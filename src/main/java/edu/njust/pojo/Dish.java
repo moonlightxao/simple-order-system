@@ -29,27 +29,10 @@ public class Dish {
     @JSONField(name = "detail", ordinal = 7)
     private String detail;
     private int num;
-    @JSONField(name = "recommed", ordinal = 8)
+    @JSONField(name = "recommend", ordinal = 8)
     private int recommend;
     @JSONField(name = "picUrl", ordinal = 9)
     private String picUrl;
     private int state;
     private String comment;
-    private List<String> size;
-    private List<String> taste;
-
-    public Dish(int id, int dishTypeId, String name, float oldPrice, float nowPrice, String unit, String detail, int num, int recommend, String picUrl, int state, String comment) {
-        this.id = id;
-        this.dishTypeId = dishTypeId;
-        this.name = name;
-        this.oldPrice = oldPrice;
-        this.nowPrice = nowPrice;
-        this.unit = unit;
-        this.detail = detail;
-        this.num = num;
-        this.recommend = recommend;
-        this.picUrl = picUrl;
-        this.state = state;
-        this.comment = comment;
-    }
 }

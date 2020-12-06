@@ -6,10 +6,15 @@ import edu.njust.service.BackStageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -52,17 +57,19 @@ public class ManageController {
         List<DishType> allType = service.allDishType();
         model.addAttribute("types",allType);
         return "backstage/dish_add";
+
     }
 
     /*处理新增菜品的请求*/
-    @RequestMapping("/createDish")
-    public String createDish(Dish dish, Model model){
-        boolean flag = service.addDish(dish);
-        if(flag == false){
-            model.addAttribute("msg","添加错误");
-            return "";
-        }
-        return "";
+    @PostMapping("/createDish")
+    public String createDish(Dish dish, @RequestParam("file") MultipartFile file, HttpServletRequest request, Model model) throws IOException {
+        String fileName = System.currentTimeMillis() + file.getOriginalFilename();
+        String realPath = request.getServletContext().getRealPath("/");
+        file.transferTo(new File(realPath + "pic/" + fileName));
+        System.out.println(fileName);
+        dish.setPicUrl(fileName);
+        System.out.println(dish);
+        return "backstage/dishManage";
     }
 
     /*处理进入到历史账单管理页面的请求跳转*/

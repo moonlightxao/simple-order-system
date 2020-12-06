@@ -12,7 +12,10 @@ import edu.njust.utils.ResponseWrite;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -29,6 +32,7 @@ public class CustomerController {
 
     /*处理初始化点餐页面的请求*/
     @RequestMapping("/menu")
+    @CrossOrigin
     public String toMenu(HttpServletResponse response) throws IOException {
         List<DishType> dishTypes = service.allDishType();
         List<DishesWithType> dishesWithTypes = service.getAllDishesWithType();
@@ -55,8 +59,11 @@ public class CustomerController {
     * 返回页面: 初始顾客端页面
     * */
     @RequestMapping("/order")
-    public String orderDish(int tableId, String numOfDishes, Model model){
-        return "";
+    @CrossOrigin
+    @ResponseBody
+    public String orderDish(@RequestParam("totalPrice")Integer price, Model model){
+        System.out.println(price);
+        return "hello";
     }
     /*处理顾客的加菜请求*/
 }
