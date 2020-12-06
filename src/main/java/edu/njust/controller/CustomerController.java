@@ -8,14 +8,12 @@ import edu.njust.pojo.DishType;
 import edu.njust.pojo.DishesWithType;
 import edu.njust.service.BackStageService;
 import edu.njust.service.CustomerService;
+import edu.njust.service.KitchenService;
 import edu.njust.utils.ResponseWrite;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -26,7 +24,8 @@ import java.util.*;
 public class CustomerController {
     @Autowired
     private CustomerService customerService;
-
+    @Autowired
+    private KitchenService kitchenService;
     @Autowired
     private BackStageService service;
 
@@ -60,10 +59,33 @@ public class CustomerController {
     * */
     @RequestMapping("/order")
     @CrossOrigin
-    @ResponseBody
-    public String orderDish(@RequestParam("totalPrice")Integer price, Model model){
-        System.out.println(price);
-        return "hello";
+    public String orderDish(@RequestBody JSONObject jsonObject, HttpServletResponse response) throws IOException {
+        /*将数据从JSON转换为JAVA对象*/
+        //System.out.println(jsonObject.toJSONString());
+        String tp = jsonObject.getString("totalPrice");
+        //System.out.println(tp);
+        Float totalPrice = Float.parseFloat(tp);
+        //System.out.println("totalPrice = " + totalPrice);
+        JSONArray jsonArray = jsonObject.getJSONArray("order");
+        String arrayStr = JSONObject.toJSONString(jsonArray);
+        List<Dish> list = JSONObject.parseArray(arrayStr, Dish.class);
+        /*处理生成账单*/
+        int orderId = customerService.order(list,totalPrice,1);
+        //System.out.println("订单编号是 " + orderId);
+        /*处理将菜品分发到相应的厨房端*/
+        Map<Integer, Dish> map = kitchenService.deliver(orderId);
+        /*将数据封装成JSON*/
+        JSONArray array = new JSONArray();
+        for(Map.Entry<Integer, Dish> entry: map.entrySet()){
+            System.out.println("key = " + entry.getKey() + " , value = " + entry.getValue());
+            JSONObject object = new JSONObject();
+            object.put("id",entry.getKey());
+            object.put("dish",entry.getValue());
+            array.add(object);
+        }
+        System.out.println(array.toJSONString());
+        ResponseWrite.writeJSON(response, array);
+        return "redirect:/index.html";
     }
     /*处理顾客的加菜请求*/
 }

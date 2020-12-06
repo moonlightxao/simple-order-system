@@ -26,9 +26,21 @@ public interface OrdersMapper {
     /*根据订单编号查询所有相关联的菜品*/
     List<OrdersDish> getAllOrdersDishById(int id);
 
+    /*根据菜品编号查询所有相关联的菜品*/
+    List<OrdersDish> getAllOrdersDishByDishId(int id);
+
     /*根据订单编号和菜品编号删除一个关联记录*/
     boolean deleteOrdersDishById(@Param("did") int dId, @Param("oid") int oId);
 
     /*添加一个订单菜品记录*/
     boolean addOrdersDish(OrdersDish ordersDish);
+
+    /*查找一个OrderDish*/
+    OrdersDish getOrderDish(int id);
+
+    /*更新一个OrderDish状态*/
+    boolean updateOrderDish(@Param("state") int state, @Param("id") int id);
+
+    /*根据桌号查找当前的一个活订单*/
+    Orders getNowOrderByTableId(@Param("id") int tableId);
 }

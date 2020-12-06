@@ -42,9 +42,7 @@
                         <th>操作</th>
                     </tr>
                     <tr>
-                        <td>
-                            <input class="in" value="编号">
-                        </td>
+                        <td th:text="${table.getId()}"></td>
                         <td th:text="${table.getName()}"></td>
                         <td th:text="${table.getMaxNum() + '人'}"></td>
                         <td th:text="${table.getLeastCost() + '元'}"></td>
