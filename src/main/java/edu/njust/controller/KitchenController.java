@@ -44,7 +44,7 @@ public class KitchenController {
     public String finishDish(@RequestBody JSONObject jsonObject, HttpServletResponse response) throws IOException {
         String tmp = jsonObject.getString("id");
         Integer orderDishId = Integer.parseInt(tmp);
-        System.out.println(orderDishId);
+        //System.out.println(orderDishId);
         Map<Integer, Dish> map = service.completeDish(orderDishId);
         JSONArray array = new JSONArray();
         for(Map.Entry<Integer, Dish> entry: map.entrySet()){
