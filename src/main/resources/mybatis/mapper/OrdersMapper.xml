@@ -59,7 +59,7 @@
         insert into order_system.orders_dish(dish_ID, orders_ID, dish_size_ID, dish_taste_ID, now_price, num, state, bz) values(#{dishId},#{orderId},#{dishSizeId},#{dishTasteId},#{nowPrice},#{num},#{state},#{comment});
     </insert>
 
-    <select id="getOrderDish" resultMap="OrdersDish">
+    <select id="getOrderDish" resultMap="orderDishMap">
         select * from order_system.orders_dish where ID=#{id}
     </select>
 

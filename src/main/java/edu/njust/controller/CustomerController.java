@@ -71,6 +71,9 @@ public class CustomerController {
         List<Dish> list = JSONObject.parseArray(arrayStr, Dish.class);
         /*处理生成账单*/
         int orderId = customerService.order(list,totalPrice,1);
+        if(orderId == -1){
+            return null;
+        }
         //System.out.println("订单编号是 " + orderId);
         /*处理将菜品分发到相应的厨房端*/
         Map<Integer, Dish> map = kitchenService.deliver(orderId);

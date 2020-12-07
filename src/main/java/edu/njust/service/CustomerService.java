@@ -30,10 +30,13 @@ public class CustomerService {
     * */
     public int order(List<Dish> list, float totalPrice, int tableId){
         Orders curOrder = new Orders(tableId,totalPrice,totalPrice,new Date(),null,0,"无");
+        Tables table = tableMapper.findTableById(tableId);
+        if(table.getState() == 1){
+            return -1;
+        }
         ordersMapper.addNewOrder(curOrder);
         curOrder = ordersMapper.getNowOrderByTableId(tableId);
         System.out.println(curOrder);
-        Tables table = tableMapper.findTableById(tableId);
         table.setState(1);
         tableMapper.updateTable(table);
         for(Dish dish:list){
