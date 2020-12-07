@@ -42,11 +42,14 @@ public class CustomerController {
         }
         JSONObject jsonObject = new JSONObject();
         JSONObject jsonObject1 = new JSONObject();
+        JSONObject jsonObject2 = new JSONObject();
         JSONArray jsonArray = new JSONArray();
         jsonObject.put("dishType",dishTypes);
         jsonObject1.put("dishes",dishesWithTypes);
+        jsonObject2.put("orderId", -1);
         jsonArray.add(jsonObject);
         jsonArray.add(jsonObject1);
+        jsonArray.add(jsonObject2);
         System.out.println(jsonArray);
         ResponseWrite.writeJSON(response,jsonArray);
         return null;
@@ -63,30 +66,24 @@ public class CustomerController {
         /*将数据从JSON转换为JAVA对象*/
         //System.out.println(jsonObject.toJSONString());
         String tp = jsonObject.getString("totalPrice");
+        String tmp = jsonObject.getString("orderId");
         //System.out.println(tp);
         Float totalPrice = Float.parseFloat(tp);
+        Integer id = Integer.parseInt(tmp);
         //System.out.println("totalPrice = " + totalPrice);
         JSONArray jsonArray = jsonObject.getJSONArray("order");
         String arrayStr = JSONObject.toJSONString(jsonArray);
         List<Dish> list = JSONObject.parseArray(arrayStr, Dish.class);
         /*处理生成账单*/
-        int orderId = customerService.order(list,totalPrice,1);
-        if(orderId == -1){
-            return null;
-        }
+        int orderId = customerService.order(list,totalPrice,1, id);
         //System.out.println("订单编号是 " + orderId);
         /*处理将菜品分发到相应的厨房端*/
         Map<Integer, Dish> map = kitchenService.deliver(orderId);
         /*将数据封装成JSON*/
         JSONArray array = new JSONArray();
-        for(Map.Entry<Integer, Dish> entry: map.entrySet()){
-            System.out.println("key = " + entry.getKey() + " , value = " + entry.getValue());
-            JSONObject object = new JSONObject();
-            object.put("id",entry.getKey());
-            object.put("dish",entry.getValue());
-            array.add(object);
-        }
-        System.out.println(array.toJSONString());
+        JSONObject jsonObject1 = new JSONObject();
+        jsonObject1.put("orderId", orderId);
+        array.add(jsonObject1);
         ResponseWrite.writeJSON(response, array);
         return "redirect:/index.html";
     }

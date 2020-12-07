@@ -27,18 +27,21 @@ public class CustomerService {
     /*处理点餐请求
     * 生成账单
     * 返回订单编号
+    * orderId = -1 wu zhangdan
     * */
-    public int order(List<Dish> list, float totalPrice, int tableId){
-        Orders curOrder = new Orders(tableId,totalPrice,totalPrice,new Date(),null,0,"无");
-        Tables table = tableMapper.findTableById(tableId);
-        if(table.getState() == 1){
-            return -1;
+    public int order(List<Dish> list, float totalPrice, int tableId, int orderId){
+        Orders curOrder = null;
+        if(orderId == -1){
+            curOrder = new Orders(tableId, totalPrice, totalPrice, new Date(), null, 0, "null");
+            ordersMapper.addNewOrder(curOrder);
+            curOrder = ordersMapper.getNowOrderByTableId(tableId);
+            Tables table = tableMapper.findTableById(tableId);
+            table.setState(1);
+            tableMapper.updateTable(table);
+        }else{
+            curOrder = ordersMapper.getOrderById(orderId);
         }
-        ordersMapper.addNewOrder(curOrder);
-        curOrder = ordersMapper.getNowOrderByTableId(tableId);
         System.out.println(curOrder);
-        table.setState(1);
-        tableMapper.updateTable(table);
         for(Dish dish:list){
             OrdersDish ordersDish = new OrdersDish(0, dish.getId(), curOrder.getId(),1,1,dish.getNowPrice(),1,0,dish.getComment());
             ordersMapper.addOrdersDish(ordersDish);

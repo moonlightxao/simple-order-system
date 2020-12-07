@@ -121,4 +121,10 @@ class OrdersystemApplicationTests {
         }
     }
 
+    @Test
+    void debugAllDishType(){
+        List<DishType> dishTypes = dishMapper.allDishType();
+        System.out.println(dishTypes);
+    }
+
 }
