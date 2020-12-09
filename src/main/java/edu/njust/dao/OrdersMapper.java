@@ -20,6 +20,11 @@ public interface OrdersMapper {
     /*新建一个订单*/
     boolean addNewOrder(Orders order);
 
+    /*更新一个订单的价格*/
+    boolean updateOrderPrice(Orders orders);
+
+    boolean updateOrderState(int id);
+
     /*删除一个订单*/
     boolean deleteOrderById(int id);
 
@@ -28,6 +33,8 @@ public interface OrdersMapper {
 
     /*根据菜品编号查询所有相关联的菜品*/
     List<OrdersDish> getAllOrdersDishByDishId(int id);
+    /*查询所有相关联的菜品*/
+    List<OrdersDish> getAllOrderDish();
 
     /*根据订单编号和菜品编号删除一个关联记录*/
     boolean deleteOrdersDishById(@Param("did") int dId, @Param("oid") int oId);

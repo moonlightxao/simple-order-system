@@ -37,7 +37,7 @@
                     </li>
                 </ul>
                 <ul class="box"  th:each="d:${dishByType}">
-                    <li><div class="dish_picture">picture1</div><div class ="dish_name" th:text="${d.getName()}"></div><div class="dish_op"><button class="mybtn">修改</button><button class="mybtn">删除</button></div></li>
+                    <li><div class="dish_picture"><img th:src="@{/temp-rainy/}+${d.getPicUrl()}"></div><div class ="dish_name" th:text="${d.getName()}"></div><div class="dish_op"><button class="mybtn">修改</button><button class="mybtn">删除</button></div></li>
                 </ul>
             </div >
         </main>

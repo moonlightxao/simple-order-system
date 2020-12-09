@@ -1,10 +1,7 @@
 package edu.njust.config;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 
 @Configuration
 public class MyMvcConfig implements WebMvcConfigurer {
@@ -20,10 +17,12 @@ public class MyMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/sign-in.html").setViewName("sign-in");
         registry.addViewController("/main.html").setViewName("backstage/dashboard");
         registry.addViewController("/sign-up.html").setViewName("sign-up");
+        registry.addViewController("/order.html").setViewName("order");
+
     }
 
-    public void addCorsMappings(CorsRegistry registry){
-        registry.addMapping("http://192.168.50.49/").allowedOrigins("*").allowCredentials(true).allowedMethods("*").maxAge(3600);
-
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/temp-rainy/**").addResourceLocations("file:D:/pic/");
     }
 }

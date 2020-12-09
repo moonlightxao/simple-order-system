@@ -10,12 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
-@Controller
+@RestController
 @RequestMapping("/kitchen")
 public class KitchenController {
     @Autowired
@@ -41,20 +42,12 @@ public class KitchenController {
     /*处理完成某个菜品的请求*/
     @RequestMapping("/finish")
     @CrossOrigin
-    public String finishDish(@RequestBody JSONObject jsonObject, HttpServletResponse response) throws IOException {
+    public String finishDish(@RequestBody JSONObject jsonObject){
         String tmp = jsonObject.getString("id");
         Integer orderDishId = Integer.parseInt(tmp);
         //System.out.println(orderDishId);
-        Map<Integer, Dish> map = service.completeDish(orderDishId);
-        JSONArray array = new JSONArray();
-        for(Map.Entry<Integer, Dish> entry: map.entrySet()){
-            System.out.println("key = " + entry.getKey() + " , value = " + entry.getValue());
-            JSONObject object = new JSONObject();
-            object.put("id",entry.getKey());
-            object.put("dish",entry.getValue());
-            array.add(object);
-        }
-        ResponseWrite.writeJSON(response, array);
+        service.completeDish(orderDishId);
+/*        System.out.println(service.completeDish(orderDishId));*/
         return null;
     }
 

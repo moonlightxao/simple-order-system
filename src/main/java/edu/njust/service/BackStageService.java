@@ -172,5 +172,22 @@ public class BackStageService {
         return list;
     }
 
+    /*3.结账*/
+    public boolean checkout(int orderId){
+        boolean flag = ordersMapper.updateOrderState(orderId);
+        if(flag == false){
+            System.out.println("更新状态错误");
+            return false;
+        }
+        Tables tables = tableMapper.findTableById(ordersMapper.getOrderById(orderId).getTableId());
+        tables.setState(0);
+        List<OrdersDish> list = ordersMapper.getAllOrdersDishById(orderId);
+        for(OrdersDish ordersDish:list){
+            ordersMapper.updateOrderDish(1,ordersDish.getId());
+        }
+        flag = tableMapper.updateTable(tables);
+        return flag;
+    }
+
 
 }

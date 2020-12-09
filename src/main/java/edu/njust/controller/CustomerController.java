@@ -77,15 +77,13 @@ public class CustomerController {
         /*处理生成账单*/
         int orderId = customerService.order(list,totalPrice,1, id);
         //System.out.println("订单编号是 " + orderId);
-        /*处理将菜品分发到相应的厨房端*/
-        Map<Integer, Dish> map = kitchenService.deliver(orderId);
         /*将数据封装成JSON*/
         JSONArray array = new JSONArray();
         JSONObject jsonObject1 = new JSONObject();
         jsonObject1.put("orderId", orderId);
         array.add(jsonObject1);
         ResponseWrite.writeJSON(response, array);
-        return "redirect:/index.html";
+        return null;
     }
     /*处理顾客的加菜请求*/
 }

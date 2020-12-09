@@ -45,7 +45,7 @@
                         <td th:text="${order.getRealPrice()}"></td>
                         <td th:text="${order.getOrdersTime()}"></td>
                         <td th:text="${order.getComment()}"></td>
-                        <td><button class="mybtn">结账</button></td>
+                        <td><a th:href="@{/admin/checkout/}+${order.getId()}">结账</a></td>
                     </tr>
                 </table>
             </div>

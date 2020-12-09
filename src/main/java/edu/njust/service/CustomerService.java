@@ -41,11 +41,14 @@ public class CustomerService {
         }else{
             curOrder = ordersMapper.getOrderById(orderId);
         }
-        System.out.println(curOrder);
+        float sumPrice = curOrder.getRealPrice();
         for(Dish dish:list){
             OrdersDish ordersDish = new OrdersDish(0, dish.getId(), curOrder.getId(),1,1,dish.getNowPrice(),1,0,dish.getComment());
             ordersMapper.addOrdersDish(ordersDish);
+            sumPrice += dish.getNowPrice();
         }
+        curOrder.setRealPrice(sumPrice);
+        ordersMapper.updateOrderPrice(curOrder);
         return curOrder.getId();
     }
 }
