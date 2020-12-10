@@ -17,9 +17,8 @@
 </head>
 
 <body class="text-center">
-    <form method="post" th:action="@{/user/sign_up}">
-        <img class="mb-4" th:src="@{/brand/bootstrap-solid.svg}" alt="" width="72" height="72">
-        <p style="color: red" th:text="${error}" th:if="${not #strings.isEmpty(error)}"></p>
+    <form method="post" th:action="@{/user/sign_up}" >
+        <h1>signup</h1>
         <div class="form-group">
             <label for="relname">真实姓名</label>
             <input type="text" name="relname" class="form-control" id="relname" th:placeholder="真实姓名">
@@ -36,7 +35,7 @@
             <label for="tel1">电话</label>
             <input type="text" name="tel" class="form-control" id="tel1" th:placeholder="电话">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default">Submit</button> <button type="submit" class="btn btn-default">back</button>
     </form>
 </body>
 </html>

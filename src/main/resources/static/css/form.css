@@ -1,36 +1,6 @@
 body {
     padding: 0;
 }
-.top {
-    overflow: hidden;
-    height: 100px;
-}
-#user {
-    float: right;
-}
-#user>a {
-    text-decoration: none;
-}
-#user>img {
-    width: 50px;
-    height: 50px;
-}
-#tool {
-    display:none;
-}
-#logo {
-    float: left;
-}
-#logo>a>img {
-    width: 100px;
-}
-.line {
-    height: 2px;
-    width: 100%;
-    background-color: dimgrey;
-    padding: 2px;
-}
-
 .nav {
     list-style-type: none;
     margin: 0;
@@ -40,12 +10,10 @@ body {
 
 
 }
-
 .nav>li {
     font-size: 15px;
     float: left;
 }
-
 .nav>li>a {
     display: block;
     color: #666;
@@ -58,6 +26,10 @@ body {
 .nav>li>a:hover {
     color:white;
     background-color: gray;
+}
+.nav>li>a:focus{
+    color: white;
+    background-color: #b3d7ff;
 }
 .mybtn{
     border-radius:3px;
@@ -171,34 +143,6 @@ ul.pagination li a.active {
 
 ul.pagination li a:hover:not(.active) {
     background-color: #ddd;
-}
-.bottom {
-    overflow: hidden;
-    background-color: whitesmoke;
-    color: grey;
-}
-#friend_link {
-    float: left;
-    padding: 15px;
-    width: 50%;
-}
-#friend_link>a:link {
-    color: grey;
-    text-decoration: none;
-}
-#friend_link>a:visited {
-    color: grey;
-}
-#friend_link>a:hover {
-    color: grey;
-}
-#friend_link>a:active {
-    color: grey;
-}
-#communication {
-    float: left;
-    padding: 15px;
-    width: 50%;
 }
 a {
     text-decoration: none;

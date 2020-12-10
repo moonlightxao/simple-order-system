@@ -22,7 +22,7 @@
     border-color:#b3d7ff;
     background-color:lightgrey;
 }
-.mybtn:active {
+.mybtn:focus {
     border-radius:3px;
     border-color: #b3d7ff;
     border-style: solid;
