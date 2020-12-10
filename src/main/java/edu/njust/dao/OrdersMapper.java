@@ -23,7 +23,7 @@ public interface OrdersMapper {
     /*更新一个订单的价格*/
     boolean updateOrderPrice(Orders orders);
 
-    boolean updateOrderState(int id);
+    boolean updateOrderState(Orders orders);
 
     /*删除一个订单*/
     boolean deleteOrderById(int id);

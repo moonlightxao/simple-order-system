@@ -11,7 +11,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
     }
 
     @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
+    public void addViewControllers(ViewControllerRegistry registry){
         registry.addViewController("/").setViewName("sign-in");
         registry.addViewController("/index.html").setViewName("index");
         registry.addViewController("/sign-in.html").setViewName("sign-in");
@@ -23,6 +23,6 @@ public class MyMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/temp-rainy/**").addResourceLocations("file:D:/pic/");
+        registry.addResourceHandler("temp-rainy/**").addResourceLocations("file:C:/Users/柳智添/Desktop/111/customerorder/public/pic/");
     }
 }

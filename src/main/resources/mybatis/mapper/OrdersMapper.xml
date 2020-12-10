@@ -43,8 +43,8 @@
         update order_system.orders set real_price=#{realPrice} where ID=#{id}
     </update>
 
-    <update id="updateOrderState">
-        update order_system.orders set state=1 where ID=#{id}
+    <update id="updateOrderState" parameterType="Orders">
+        update order_system.orders set state=1,settle_time=#{settleTime} where ID=#{id}
     </update>
 
     <delete id="deleteOrderById">

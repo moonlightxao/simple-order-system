@@ -3,8 +3,10 @@ package edu.njust.service;
 import edu.njust.dao.*;
 import edu.njust.pojo.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -64,11 +66,6 @@ public class BackStageService {
     /*1.查找所有的菜品类型*/
     public List<DishType> allDishType(){
         List<DishType> list = dishMapper.allDishType();
-        if(list != null){
-            for(DishType dishType : list){
-                System.out.println(dishType);
-            }
-        }
         return list;
     }
 
@@ -120,6 +117,11 @@ public class BackStageService {
             list.add(dishesWithType);
         }
         return list;
+    }
+
+    /*10.根据菜品编号查询单个菜品*/
+    public Dish getDishById(int id){
+        return dishMapper.getDishById(id);
     }
 
 
@@ -174,12 +176,15 @@ public class BackStageService {
 
     /*3.结账*/
     public boolean checkout(int orderId){
-        boolean flag = ordersMapper.updateOrderState(orderId);
+        Orders orders = ordersMapper.getOrderById(orderId);
+        orders.setSettleTime(new Date());
+        /*System.out.println(orders.getSettleTime());*/
+        boolean flag = ordersMapper.updateOrderState(orders);
         if(flag == false){
             System.out.println("更新状态错误");
             return false;
         }
-        Tables tables = tableMapper.findTableById(ordersMapper.getOrderById(orderId).getTableId());
+        Tables tables = tableMapper.findTableById(orders.getTableId());
         tables.setState(0);
         List<OrdersDish> list = ordersMapper.getAllOrdersDishById(orderId);
         for(OrdersDish ordersDish:list){

@@ -35,11 +35,6 @@ public class CustomerController {
     public String toMenu(HttpServletResponse response) throws IOException {
         List<DishType> dishTypes = service.allDishType();
         List<DishesWithType> dishesWithTypes = service.getAllDishesWithType();
-        if(dishesWithTypes == null){
-            System.out.println("dishesWithTypes == null");
-        }else{
-            System.out.println("dishesWithTypes != null");
-        }
         JSONObject jsonObject = new JSONObject();
         JSONObject jsonObject1 = new JSONObject();
         JSONObject jsonObject2 = new JSONObject();
@@ -50,7 +45,6 @@ public class CustomerController {
         jsonArray.add(jsonObject);
         jsonArray.add(jsonObject1);
         jsonArray.add(jsonObject2);
-        System.out.println(jsonArray);
         ResponseWrite.writeJSON(response,jsonArray);
         return null;
     }

@@ -13,8 +13,8 @@
   <body class="text-center box" >
     <form class="form-signin" th:action="@{/user/login}">
       <h1>login</h1>
-      <input type="text" name="usr" id="inputUsr" class="form-control" th:placeholder="用户名" required autofocus>
-      <input type="password" name="pwd" id="inputPassword" class="form-control" th:placeholder="密码" required>
+      <input type="text" name="usr" id="inputUsr" class="form-control" th:placeholder="${'用户名'}" required autofocus>
+      <input type="password" name="pwd" id="inputPassword" class="form-control" th:placeholder="${'密码'}" required>
       <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
       <a th:href="@{/sign-up.html}">注册</a>
     </form>

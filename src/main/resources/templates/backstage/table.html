@@ -48,10 +48,10 @@
                         <td th:text="${table.getLeastCost() + '元'}"></td>
                         <td th:text="${table.getState()==1?'使用中':'空闲'}"></td>
                         <td th:text="${table.getComment()}"></td>
-                        <td><button class="mybtn">删除</button></td>
+                        <td><button><a  class="mybtn" th:href="@{/admin/deleteTable/}+${table.getId()}">删除</a></button></td>
                     </tr>
                 </table>
-                <button class="mybtn">新增</button>
+                <button><a class="mybtn" th:href="@{/admin/toAddTable}">新增</a></button>
             </div>
         </main>
     </div>

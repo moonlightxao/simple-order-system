@@ -29,7 +29,7 @@ public class KitchenController {
         Map<Integer, Dish> map = service.queryAllWaitingDish();
         JSONArray array = new JSONArray();
         for(Map.Entry<Integer, Dish> entry: map.entrySet()){
-            System.out.println("key = " + entry.getKey() + " , value = " + entry.getValue());
+/*            System.out.println("key = " + entry.getKey() + " , value = " + entry.getValue());*/
             JSONObject object = new JSONObject();
             object.put("id",entry.getKey());
             object.put("dish",entry.getValue());

@@ -37,7 +37,7 @@
                     </li>
                 </ul>
                 <ul class="box">
-                    <li th:each="d:${dishByType}"><div class="dish_picture"><img width="100%" height="100%" th:src="@{/temp-rainy/}+${d.getPicUrl()}"></div><div class ="dish_name" th:text="${d.getName()}"></div><div class="dish_op"><button class="mybtn">删除</button></div></li>
+                    <li th:each="d:${dishByType}"><div class="dish_picture"><img width="100%" height="100%" th:src="@{/temp-rainy/}+${d.getPicUrl()}"></div><div class ="dish_name" th:text="${d.getName()}"></div><div class="dish_op"><button><a class="mybtn" th:href="@{/admin/delete/}+${d.getId()}">删除</a></button></div></li>
                 </ul>
             </div >
         </main>
