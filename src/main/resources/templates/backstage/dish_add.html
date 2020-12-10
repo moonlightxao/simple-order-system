@@ -22,34 +22,25 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div th:replace="~{commons/commons::sidebar(active='account.html')}"></div>
+        <div th:replace="~{commons/commons::sidebar(active='dishManage.html')}"></div>
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <form method="post" th:action="@{/admin/modifyAccount}">
-                <input type="hidden" name="id" th:value="">
-                <div class="form-group">
-                    <label for="dish_id">编号</label>
-                    <input type="text" name="dish_id" class="form-control" id="dish_id"  required="required">
-                </div>
+            <form method="post" enctype="multipart/form-data" th:action="@{/admin/createDish}">
                 <div class="form-group">
                     <label for="dish_name">菜品名称</label>
-                    <input type="text" name="dish_name" class="form-control" id="dish_name"  required="required">
+                    <input type="text" name="name" class="form-control" id="dish_name"  required="required">
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Dropdown
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" th:each="type:${types}">
-                        <li th:text="${type.getName()} "></li>
-                    </ul>
+                    <select name="dishTypeId">
+                        <option th:each="type:${types}" th:text="${type.getName()}" th:value="${type.getId()}"></option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="history_p">原价</label>
-                    <input type="text" name="history_p" class="form-control" id="history_p" required="required">
+                    <input type="text" name="oldPrice" class="form-control" id="history_p" required="required">
                 </div>
                 <div class="form-group">
                     <label for="now_p">现价</label>
-                    <input type="text" name="now_p" class="form-control" id="now_p"  required="required">
+                    <input type="text" name="nowPrice" class="form-control" id="now_p"  required="required">
                 </div>
                 <div class="form-group">
                     <label for="unit">单位</label>
@@ -57,25 +48,32 @@
                 </div>
                 <div class="form-group">
                     <label for="info">详细信息</label>
-                    <input type="text" name="info" class="form-control" id="info"  required="required">
+                    <input type="text" name="detail" class="form-control" id="info"  required="required">
                 </div>
                 <div class="form-group">
                     <label for="counts">库存数量</label>
-                    <input type="text" name="counts" class="form-control" id="counts"  required="required">
+                    <input type="text" name="num" class="form-control" id="counts"  required="required">
                 </div>
                 <div class="form-group">
-                    <label for="special">特色菜</label>
-                    <input type="text" name="special" class="form-control" id="special"  required="required">
+                    <select>
+                        <option name="recommend" value="1">是推荐菜</option>
+                        <option name="recommend" value="0">不是推荐菜</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="status">状态</label>
-                    <input type="text" name="status" class="form-control" id="status"  required="required">
+                    <select name="state">
+                        <option value="1">正常</option>
+                        <option value="2">缺货</option>
+                        <option value="3">其他</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="file" name="file" required="required">
                 </div>
                 <div class="form-group">
                     <label for="bz">备注</label>
-                    <input type="text" name="bz" class="form-control" id="bz"  required="required">
+                    <input type="text" name="comment" class="form-control" id="bz"  required="required">
                 </div>
-
                 <button type="submit" class="btn btn-default">确认添加</button>
             </form>
 

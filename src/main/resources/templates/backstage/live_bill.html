@@ -43,7 +43,7 @@
                     <tr th:each="order:${livingBill}">
                         <td th:text="${order.getId()}"></td>
                         <td th:text="${order.getRealPrice()}"></td>
-                        <td th:text="${order.getSettleTime()}"></td>
+                        <td th:text="${order.getOrdersTime()}"></td>
                         <td th:text="${order.getComment()}"></td>
                         <td><button class="mybtn">结账</button></td>
                     </tr>

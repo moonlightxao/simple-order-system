@@ -63,7 +63,13 @@ public class BackStageService {
     /*菜品类型维护业务，主要负责菜品的增删改查*/
     /*1.查找所有的菜品类型*/
     public List<DishType> allDishType(){
-        return dishMapper.allDishType();
+        List<DishType> list = dishMapper.allDishType();
+        if(list != null){
+            for(DishType dishType : list){
+                System.out.println(dishType);
+            }
+        }
+        return list;
     }
 
     /*2.新增一个菜品类型*/

@@ -44,7 +44,11 @@
     </delete>
 
     <select id="getAllOrdersDishById" resultMap="orderDishMap">
-        select * from order_system.orders_dish where orders_ID=#{id}
+        select * from order_system.orders_dish where orders_ID=#{id} AND state=0
+    </select>
+
+    <select id="getAllOrdersDishByDishId" resultMap="orderDishMap">
+        select * from order_system.orders_dish where dish_ID=#{id} AND state=0
     </select>
 
     <delete id="deleteOrdersDishById">
@@ -54,4 +58,16 @@
     <insert id="addOrdersDish" parameterType="OrdersDish">
         insert into order_system.orders_dish(dish_ID, orders_ID, dish_size_ID, dish_taste_ID, now_price, num, state, bz) values(#{dishId},#{orderId},#{dishSizeId},#{dishTasteId},#{nowPrice},#{num},#{state},#{comment});
     </insert>
+
+    <select id="getOrderDish" resultMap="orderDishMap">
+        select * from order_system.orders_dish where ID=#{id}
+    </select>
+
+    <update id="updateOrderDish">
+        update order_system.orders_dish set state=#{state} where ID=#{id}
+    </update>
+
+    <select id="getNowOrderByTableId" resultMap="orderMap">
+        select * from order_system.orders where tables_ID=#{id} AND state=0
+    </select>
 </mapper>
