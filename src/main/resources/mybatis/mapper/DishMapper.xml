@@ -46,7 +46,7 @@
     </select>
 
     <select id="allDishByType" resultMap="dishMap">
-        select * from order_system.dish where dish_type_ID=#{id}
+        select * from order_system.dish where dish_type_ID=#{id} AND num>0
     </select>
 
     <insert id="addDish" parameterType="Dish">
