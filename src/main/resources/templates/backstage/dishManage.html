@@ -31,13 +31,13 @@
                 </div>
             </div>
             <div id="main" >
-                <ul class="nav flex-column dish_type " th:each="type:${types}">
-                    <li class="nav-item " >
+                <ul class="nav flex-column dish_type " >
+                    <li class="nav-item " th:each="type:${types}">
                         <a th:href="@{'/admin/queryDish?typeId='+${type.getId()}}" th:text="${type.getName()}"></a>
                     </li>
                 </ul>
-                <ul class="box"  th:each="d:${dishByType}">
-                    <li><div class="dish_picture"><img th:src="@{/temp-rainy/}+${d.getPicUrl()}"></div><div class ="dish_name" th:text="${d.getName()}"></div><div class="dish_op"><button class="mybtn">修改</button><button class="mybtn">删除</button></div></li>
+                <ul class="box">
+                    <li th:each="d:${dishByType}"><div class="dish_picture"><img width="100%" height="100%" th:src="@{/temp-rainy/}+${d.getPicUrl()}"></div><div class ="dish_name" th:text="${d.getName()}"></div><div class="dish_op"><button class="mybtn">删除</button></div></li>
                 </ul>
             </div >
         </main>

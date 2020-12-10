@@ -45,6 +45,8 @@ public class CustomerService {
         for(Dish dish:list){
             OrdersDish ordersDish = new OrdersDish(0, dish.getId(), curOrder.getId(),1,1,dish.getNowPrice(),1,0,dish.getComment());
             ordersMapper.addOrdersDish(ordersDish);
+            dish.setNum(dish.getNum() - 1);
+            dishMapper.updateDish(dish);
             sumPrice += dish.getNowPrice();
         }
         curOrder.setRealPrice(sumPrice);
